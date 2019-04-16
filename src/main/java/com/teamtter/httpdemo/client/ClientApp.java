@@ -47,6 +47,7 @@ public class ClientApp {
 
 	private static String sendFeign(OkHttpClient client, byte[] contentToSend) {
 		TodoClient todoFeignClient = Feign.builder()
+				.client(new feign.okhttp.OkHttpClient(client))
 				// .decoder(new GsonDecoder())
 				.target(TodoClient.class, serverBase + Endpoints.todo);
 		byte[] received = todoFeignClient.upload(contentToSend);
