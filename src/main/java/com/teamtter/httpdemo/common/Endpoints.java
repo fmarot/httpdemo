@@ -4,6 +4,6 @@ public class Endpoints {
 	public static final String todo = "/todo";
 	
 	public class TodoMethods {
-		public static final String upload = "/upload";
+		public static final String upload = "/upload/{fileToSave}";
 	}
 }

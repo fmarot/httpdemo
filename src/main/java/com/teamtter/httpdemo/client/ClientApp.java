@@ -50,7 +50,7 @@ public class ClientApp {
 				.client(new feign.okhttp.OkHttpClient(client))
 				// .decoder(new GsonDecoder())
 				.target(TodoClient.class, serverBase + Endpoints.todo);
-		byte[] received = todoFeignClient.upload(contentToSend);
+		byte[] received = todoFeignClient.upload("fileName.txt", contentToSend);
 		return new String(received, StandardCharsets.UTF_8);
 	}
 
