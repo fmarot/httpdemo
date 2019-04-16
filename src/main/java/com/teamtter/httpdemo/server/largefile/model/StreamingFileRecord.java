@@ -1,4 +1,4 @@
-package com.teamtter.httpdemo.server.model;
+package com.teamtter.httpdemo.server.largefile.model;
 
 import java.sql.Blob;
 import javax.persistence.Entity;

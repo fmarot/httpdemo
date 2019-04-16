@@ -18,7 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(Endpoints.todo)
 public class TodoController {
 
-	/** @return the same content received in order for the caller to check what was sent 
+	/** Receives a byte array, no streaming. Do not use with large data !
+	 * @return the same content received in order for the caller to check what was sent 
 	 * is the same as what is received (usefull for tests) */
 	@PostMapping(Endpoints.TodoMethods.upload)
 	public byte[] uploadFile(@RequestBody byte[] bytes) {
