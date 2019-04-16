@@ -36,9 +36,7 @@ public class LargeFileService {
 	public StreamingFileRecord saveFile(String originalFilename, long filesize, InputStream inputStream) {
 		Session session = entityManager.unwrap(Session.class);
 		LobCreator lobCreator = Hibernate.getLobCreator(session);
-		IOUtils.closeQuietly(inputStream);
-		//Blob blob = lobCreator.createBlob(inputStream, filesize);
-		Blob blob = null;
+		Blob blob = lobCreator.createBlob(inputStream, filesize);
 		StreamingFileRecord streamingFileRecord = new StreamingFileRecord(originalFilename, blob);
 		streamingFileRecord = streamingFileRepository.save(streamingFileRecord);
 		log.info("Persisted {} with id: {}", originalFilename, streamingFileRecord.getId());
