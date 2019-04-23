@@ -30,7 +30,7 @@ Create a large file in Linux:
 
 ==== send it to server
 
- curl -D - -F "file=@lombok.jar" http://localhost:8080/blobs
+ curl -D - -F "file=@test.txt" http://localhost:8080/blobs
 
 you can monitor with VisualVM that the memory of the server did not increase.
 
