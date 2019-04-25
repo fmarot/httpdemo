@@ -1,7 +1,13 @@
 package com.teamtter.httpdemo.server;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,5 +19,14 @@ public class ServerApp {
 		SpringApplication.run(ServerApp.class, args);
 		log.info("Server Main done");
 	}
-	
+
+	@ControllerAdvice
+	public class DogsServiceErrorAdvice {
+		@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+		@ExceptionHandler({ Exception.class })
+		public void handle(HttpServletRequest request, Exception thrown) {
+			log.error("Exception thrown by controller");
+		}
+	}
+
 }
